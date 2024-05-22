@@ -2,6 +2,9 @@ apple
 banana
 coconut
 dragonfruit
+elite
+frog
+gorilla
 horses
 indianapolis
 jock
@@ -13,6 +16,7 @@ oranges
 papaya
 quick
 rest
+salmon
 tub
 unicode
 vaccine
