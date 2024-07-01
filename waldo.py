@@ -7,8 +7,6 @@ from typing import Optional, List, Tuple
 
 IGNORE: List[str] = ["git", "test", "svg", "cache"]
 
-
-# pylint: disable=missing-function-docstring
 def get_file_list(target_path: Optional[str] = None) -> List[str]:
     """Returns recursive list of files in ``target_path``"""
     if target_path is None:
@@ -47,7 +45,6 @@ def get_file_list(target_path: Optional[str] = None) -> List[str]:
 
 MatchList = List[Tuple[str, str, str]]
 
-# pylint: disable=missing-function-docstring
 def dirty_word_search(dirty_word_list: str, file_list: List[str]) -> MatchList:
     """Performs a dirty word search, returning list of files with dirty words"""
     dirty_files: MatchList = []
@@ -77,7 +74,6 @@ def dirty_word_search(dirty_word_list: str, file_list: List[str]) -> MatchList:
                                                  str(line_number))
                 except FileNotFoundError:
                     pass
-
                 except UnicodeError:
                     # Unicode failed so this must be a binary file
                     chunk = b""
@@ -91,15 +87,13 @@ def dirty_word_search(dirty_word_list: str, file_list: List[str]) -> MatchList:
                         if match is not None:
                             print(f"[*] HIT! File: \
                                 {filename} Offset {match.start()}")
-
                             match_content = (filename,
                                              word.rstrip(),
                                              f"offset={match.start()}")
-
                 except PermissionError:
                     # Hope there's nothing in there
                     pass
-
+                    
                 if match:
                     match_content = (filename, word.rstrip(), str(line_number))
                     dirty_files.append(match_content)
@@ -107,7 +101,6 @@ def dirty_word_search(dirty_word_list: str, file_list: List[str]) -> MatchList:
     return dirty_files
 
 
-# pylint: disable=missing-function-docstring
 def output(match_list: MatchList, output_path: Optional[str] = None):
     """Writes list of files to file ``output_path``"""
     if output_path is None:
